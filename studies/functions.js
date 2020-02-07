@@ -67,7 +67,7 @@ basicExample(); // returns 'hello there how are you?'
 
 // but what if we try to console.log imScoped in our global scope?
 
-//console.log(imScoped); // reference error imScoped is not defined
+// console.log(imScoped); // reference error imScoped is not defined
 // In the above example we're not able to reach into the function to pull out a value
 // imScoped was never defined in the global scopel, hence it's undefined
 
@@ -106,3 +106,20 @@ _______________________________________________________________________|       |
                                                                                |
 _______________________________________________________________________________|                                                                               
 */
+
+// Closure Example
+
+
+function operationSparkGreeting(firstName, lastName){
+    let intro = "Welcome to Operation Spark ";
+    // this inner function has access to the outer function's variables, including the parameter
+    // the inverse is not true
+      function greeting(){
+        console.log(intro + firstName + ' ' +lastName);
+    }
+   return greeting();
+}
+// if we tried to console.log(intro) here, we would get a reference error as it is scoped to that function
+
+operationSparkGreeting('Sebastian', 'Hove'); // returns Welcome to Operation Spark Sebastian Hove 
+

@@ -52,14 +52,59 @@ function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
         // we implemented the length api for you //
         length: function() {
+            // function that returns our contacts.length
             return contacts.length;
+        }, 
+        addContact: function(contact){
+            // declare a variable newContact, the parameter will equal our variable
+            var newContact = contact;
+            // finally we simply push it into our contacts Array
+            contacts.push(newContact);
+        },
+        findContact: function(fullName){
+            // need a test name to hold our variable
+            let testName;
+            // then we loop through the whole contacts array
+            for(let i = 0; i < contacts.length; i++){
+            // for each iteration we set testName = to the contacts[i].nameFirst with a SPACE
+            // and then contacts[i].nameLast
+            testName = contacts[i].nameFirst + ' ' + contacts[i].nameLast;
+            // if the testName is equal to the fullName input, we return the whole object in contacts[i];
+            if (testName === fullName){
+                return contacts[i];
+            };
+            }
+        },
+        removeContact: function(contact){
+            // since you're putting in the whole object as a parameter
+            // we set a new variable named inex equal to contacts.indexOf(contact)
+            // that will point to the part of the array that holds the contact
+                //var index = contacts.indexOf(contact); --> we don't even need htis we can just add it in one line of code
+             // We can use the splice method, and use our index value to point to what
+             // part of the array we're splice, and then say we're only removing the 1 element
+             // this should delete it
+            contacts.splice(contacts.indexOf(contact),1);
+        },
+        printAllContactNames: function(){
+            // empty names string to store our loop outputs into
+            let names = '';
+            // for loop to go through the entire array
+            for (let i = 0; i < contacts.length; i++){
+                // names += the contact info each time, with a new line at the end
+                names += contacts[i].nameFirst + ' ' + contacts[i].nameLast + "\n";
+            } 
+            // you need to return with the slice method attached because the slice method returns a 
+            // new array in that instance, it doesn't save it to our original names variabble
+            // that we created. 
+            return names.slice(0, names.length-1);
         }
-    }
+        
+    };
 }
 
 

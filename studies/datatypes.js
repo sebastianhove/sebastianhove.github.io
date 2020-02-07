@@ -35,6 +35,10 @@ let y = 35;
 // Strings are created using isngle or double quotes surrounding one or more characters.
 let myString = "Hello, I'm a string!"
 
+// Strings work similarly to Arrays, we can access their characters by their index values
+let myNewString = myString.charAt(0);
+// This would set myNewStrings value equal to "H" since it's at the 0th index of myString
+
 // 3.) The Boolean Data Type - The Boolean data type can hold only two values: true or false
 // it is typically used to store values like yes (true) or no (false)
 // You can imagine them as an on or off switch as well
@@ -73,6 +77,9 @@ let myObject = {
 // updating existing elements requires you reference the already existing key
 myObject.tired = 'yes';
 console.log(myObject); // logs { name: 'Sebastian', age: 32, student: true, tired: 'yes' }
+
+// if we wanted to access certain object values we can use the dot notation (or bracket for certain instances)
+console.log(myObject.name) // output: Sebastian 
 
 // 6.) The Function Data Type - the function is a callable object that executes a block of code. 
 // Since functions are objects, it is possible to assign them to variables. Functions can be used at any place where
@@ -117,7 +124,8 @@ console.log("I'm a string" / 2); // output: NaN
 // 10.) Infinity & Negative Infinity - Infinity represents the mathematical infinity, which
 // is greater than any number. Infinity is displaced when a number exceeds the upper limit of 
 // the floating point numbers. which is  1.797693134862315E+308, and negative is  -1.797693134862315E+308.
-
+console.log(1.797693134862315E+308 * 2); //output: Infinity
+console.log(-1.797693134862315E+308 * 2); //output: -Infinity
 
 // 11.) What is the difference between primitive/simple and complex data types?
 /* JavaScript provides different data types to hold different types of values.

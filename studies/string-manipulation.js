@@ -23,8 +23,12 @@ console.log(myString3);  // prints 'Hello World!'
 // But with JavaScript, methods and properties are also available to primitive values
 // because JavaScript treats primitive values as objects when executing methods and properties
 
-// 1.) String Length - the length property returns the length of a string
-console.log(myString3.length); // returns 12 because it is 12 characters long!
+// 1.) String Manipulation - We can also concat two strings together with the += operator
+// While this is a math expression it also works with strings.
+// To show an example of how it works with math we can do x += y, this boils down to x = x + y
+// we can also do it with strings!
+let myString100 = myString += myString2;
+console.log(myString100); // returns Hello world! 
 
 // 2.) Finding a String in a String
 // the indexOf() method returns the index (the position of) the first occurence of a specified 

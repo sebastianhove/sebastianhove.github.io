@@ -49,6 +49,11 @@ myVariable = "someString";
 // to the top of the current scope (as in the top of the current script or the current function)
 /* Keep in mind that all variables declared with var are hoisted to the top of the script
 let and const are NOT hoisted. 
+//All declarations (function, var, let, const and class) are hoisted in JavaScript, 
+while the var declarations are initialized with undefined , 
+but let and const declarations remain uninitialized. They will only get initialized when 
+their lexical binding (assignment)is evaluated during runtime by the JavaScript engine.
+
 
 Javascript only hoists declarations, not initializations. 
 for example

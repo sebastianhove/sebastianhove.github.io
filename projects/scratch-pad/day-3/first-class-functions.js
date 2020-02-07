@@ -13,7 +13,13 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    return function(test){
+        // return a function, input a parameter that we're testing
+        // if the test is greater than the base return true, else return false
+        if(test > base){
+            return true;
+        } return false;
+    };
     
     
     
@@ -27,7 +33,13 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    // return a function, input a parameter that we're testing
+    return function(test){
+        // if the test is less than the base, return true, else return false
+        if(test < base){
+            return true;
+        } return false;
+    };
     
     
     
@@ -41,7 +53,13 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
+    // return a function with our string parameter 
+    return function(string){
+        // we need to make both parameters uppercase and test if they're strictly equal
+        if(string[0].toUpperCase() === startsWith.toUpperCase()){
+            return true;
+        } return false;
+    };
     
     
     
@@ -55,7 +73,13 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+    return function(string){
+        // to access the last element of the string, in the brackets we do string.length - 1
+        // and set them both toUpperCase() and test if they're strictly equal
+        if(string[string.length-1].toUpperCase() === endsWith.toUpperCase()){
+            return true;
+        } return false;
+    };
     
     
     
@@ -71,7 +95,14 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
+    // create array to store our altered values in
+    let myArray = [];
+    // for loop to go over the array
+    for(let i = 0; i < strings.length; i++){
+        //push into the array with our modify function altering the string element of i
+        myArray.push(modify(strings[i]));
+        // return the array
+    } return myArray;
     
     
     
@@ -88,10 +119,18 @@ function modifyStrings(strings, modify) {
  * TIP: You need to loop over the Strings, right? And pass them to the test?
  */
 function allStringsPass(strings, test) {
-    // YOUR CODE BELOW HERE //
-    
-    
-    
+    // we need to make a counter, because if we return true in the for loop, it ends after the first iteration
+   let counter = 0;
+    for(let i = 0; i < strings.length; i++){
+        // if the test function resolves to true, then we increment our counter by one each time
+        if(test(strings[i])){
+            counter++;
+        }
+        // if the counter number equals the length of our strings array, we return true
+        // otherwise we return false 
+    } if (counter === strings.length){
+      return true;
+    } return false;
     
     // YOUR CODE ABOVE HERE //
 }

@@ -28,6 +28,13 @@ if (age >= 16 && age <= 18) {
 // the if statement is our first condition that needs to evaluate to true or false
 // if it evaluates to true, then the first block of code is executed.
 
+// if (age >= 16 && age <= 18)
+// this is the beginning of our if chain
+// the way it works is 
+// if (the statement inside here is true) {we execute this code}
+// so if (the age is greater than or equal to 16 && less than or equal to eighteen)
+// {we console.log you're old enough to drive with a permit}
+
 // if it should evaluate to false it goes down to the next else-if statement
 // an else if statement is just another if statement, it is simple formatting
 // for code readability, you can have as many else-if statements as you want

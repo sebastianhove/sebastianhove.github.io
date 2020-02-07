@@ -34,6 +34,7 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
+    // Objects are tricky because null, arrays, and dates are also 'objects' so we need to make sure they're not all of those as well
    if (typeof(value) === 'object' && value !== null && Array.isArray(value) === false && value instanceof Date === false) {
         return true;
    } return false;
@@ -51,7 +52,10 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
+    // we can use the functions we built above to test for this!!! We need to use the OR || to test if either pass
+       if (isArray(value) || isObject(value)){
+           return true;
+       } return false;
     
     
     
@@ -79,7 +83,28 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
-    
+    if (typeof(value) === 'string'){
+        return 'string';
+        // we can use our isArray function we built above to test
+    } else if (isArray(value)){
+        return 'array';
+        // use our isObject function we built to test
+    } else if (isObject(value)){
+        return 'object';
+        // the rest are pretty self explanitory... 
+    } else if (typeof(value) === 'undefined'){
+        return 'undefined';
+    } else if (typeof(value) === 'number'){
+        return 'number';
+    } else if (typeof(value) === 'boolean'){
+        return 'boolean';
+    } else if (value === null){
+        return 'null';
+    } else if (typeof(value) === 'function'){
+        return 'function';
+    } else if (value instanceof Date){
+        return 'date';
+    }
     
     
     

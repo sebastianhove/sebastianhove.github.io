@@ -198,10 +198,13 @@ if (stringOne > stringTwo){
 function sortDescending(stringOne, stringTwo) {
     // same code as above with flipped values 
     // YOUR CODE BELOW HERE //
+    // if string One is greater than string 2, we return 1
 if (stringOne > stringTwo){
     return 1;
+    // if string two is greater than strine one, we return -1
 } else if (stringTwo > stringOne){
     return -1;
+    // our else statement defaults to return 0
 } return 0;
 
 

@@ -110,7 +110,11 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
+    // we just need to return a string here and capitalize the name and the species keys in the object
+    // we can use our capitalize word function above to greatly cut down on code
+    // our ' is a ' needs a space on each side when we concat so it comes out
+    // as a readable sentence. 
+    return capitalizeWord(object.name) + ' is a ' + capitalizeWord(object.species);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -118,7 +122,13 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
+    // so first we check to see if the object has a property key called noises
+    // and that it's length is greater than 0
+    // if that's the case, we return it and use the array method .join with a ' '
+    // for each so they space out rather than one long winded unreadable word. 
+    if (object.hasOwnProperty('noises') && object.noises.length > 0){
+        return object.noises.join(' ');
+    } return 'there are no noises';
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -126,7 +136,12 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+    // we can use the .includes method on a string
+    // if the string includes our word parameter
+    // we return true, otherwise return false 
+if (string.includes(word)){
+    return true;
+} return false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -134,23 +149,55 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+    // since object.friends is an array
+    // we simply use the push method to add the friend
+    // and return the object in the end. 
+object.friends.push(name);
+return object;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function isFriend(name, object) {
 
+function isFriend(name, object) {
+    // if the object has a property of 'friends' and object.friends includes (since it's an array)
+    // we can check to see if it includes the name parameter and return true if both resolve to true
+    // otherwise return false 
+if (object.hasOwnProperty('friends') && object.friends.includes(name)){
+    return true;
+} return false;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+    /* global nonFriends */
+    // QUnit.test("nonFriends() : Should take a name and a list of people, and return a list of all the names that <name> is not friends with", function(assert){
+    //   var data = [
+    //     {name: "Jimmy", friends:["Sara", "Liza"]},
+    //     {name: "Bob", friends:[]},
+    //     {name: "Liza", friends: ["Jimmy"]},
+    //     {name: "Sara", friends: ["Jimmy"]}
+    //   ];
+    //   assert.deepEqual(nonFriends("Jimmy", data), ["Bob"]);
+    //   assert.deepEqual(nonFriends("Bob", data), ["Jimmy", "Liza", "Sara"]);
+    //   assert.deepEqual(nonFriends("Sara", data), ["Bob","Liza"]);
+    // });
+
 
 function nonFriends(name, array) {
-
+    // build an empty array to store our non friends into
+var notFriends = [];
+// for loop to loop through the array we're passing in
+for (let i = 0; i < array.length; i++){
+    // if array[i].name does NOT equal the name, and, each other names friends
+    // list does not include that name, then we push that name into our nonFriends array
+    if (array[i].name !== name && !array[i].friends.includes(name)){
+        notFriends.push(array[i].name);
+    } // return nonFriends list after the loop has completed 
+} return notFriends;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -158,7 +205,11 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+    // simply do object[key] = value
+    // have to use bracket notation as the key isn't known as of yet 
+object[key]= value;
+// return the object 
+return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -166,7 +217,17 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+    // we need to loop through the array we're putting in
+for (let i = 0; i < array.length; i++){
+    // as well as each key in the object
+    for (var key in object) {
+        // if the array index is equal to the key string
+        if (array[i] === key){
+            // we delete the object [array[i]] which resolves to that key value string
+            delete object[array[i]];
+        }
+    }
+}
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -174,8 +235,12 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+    // the spread operator combined with Set is a built in function
+    // that automatically removes duplicates for us
+    // we could use filter or spread, but the less code, the better 
+return [...new Set(array)];
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
